@@ -218,7 +218,8 @@ FROM fanverse_scenes
 
 app.post("/api/signup", async (req, res) => {
   try {
-    const { name, username, email, password } = req.body;
+  const { name, username, email, password } =
+  typeof req.body === "string" ? JSON.parse(req.body) : req.body;
     console.log("SIGNUP VALUES:", {
   name,
   username,
