@@ -198,7 +198,7 @@ const [profileName, setProfileName] = useState("");
 
   const fetchScenes = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/scenes?userId=${currentUser.id}`);
+      const response = await fetch(`https://fanverse-backend-jqhf.onrender.com/api/scenes?userId=${currentUser.id}`);
       const data = await response.json();
 
       if (!response.ok) {
@@ -221,7 +221,7 @@ useEffect(() => {
   const fetchMyPosts = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3001/api/my-posts?userId=${currentUser.id}`
+        `https://fanverse-backend-jqhf.onrender.com/api/my-posts?userId=${currentUser.id}`
       );
 
       const data = await response.json();
@@ -270,7 +270,7 @@ useEffect(() => {
       console.log("DISCOVER USER ID:", currentUser?.id);
 
       const response = await fetch(
-        `http://localhost:3001/api/discover?${params.toString()}`
+        `https://fanverse-backend-jqhf.onrender.com/api/discover?${params.toString()}`
       );
 
       const data = await response.json();
@@ -324,7 +324,7 @@ useEffect(() => {
       }
 
       const response = await fetch(
-        `http://localhost:3001/api/trending?${params.toString()}`
+        `https://fanverse-backend-jqhf.onrender.com/api/trending?${params.toString()}`
       );
 
       const data = await response.json();
@@ -377,8 +377,8 @@ if (authMode === "signup" && !authUsername.trim()) {
   try {
     const endpoint =
       authMode === "signup"
-        ? "http://localhost:3001/api/signup"
-        : "http://localhost:3001/api/login";
+        ? "https://fanverse-backend-jqhf.onrender.com/api/signup"
+        : "https://fanverse-backend-jqhf.onrender.com/api/login";
 
     const body =
       authMode === "signup"
@@ -394,12 +394,12 @@ if (authMode === "signup" && !authUsername.trim()) {
           };
 
     const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
+  method: "POST",
+  headers: {
+    "Content-Type": "text/plain;charset=UTF-8",
+  },
+  body: JSON.stringify(body),
+});
 
     const data = await response.json();
 
@@ -430,7 +430,7 @@ localStorage.setItem(
 
     try {
       const response = await fetch(
-        "http://localhost:3001/api/generate",
+        "https://fanverse-backend-jqhf.onrender.com/api/generate",
         {
           method: "POST",
 
@@ -473,7 +473,7 @@ navigateTo("result");
 
   try {
     const response = await fetch(
-      `http://localhost:3001/api/users/search?q=${encodeURIComponent(
+      `https://fanverse-backend-jqhf.onrender.com/api/users/search?q=${encodeURIComponent(
         searchUsername.trim()
       )}`
     );
@@ -516,7 +516,7 @@ const toggleLike = async (sceneId) => {
 
   try {
     const response = await fetch(
-      `http://localhost:3001/api/scenes/${sceneId}/like`,
+      `https://fanverse-backend-jqhf.onrender.com/api/scenes/${sceneId}/like`,
       {
         method: "POST",
         headers: {
@@ -568,7 +568,7 @@ const toggleLike = async (sceneId) => {
 const loadSceneEngagement = async (sceneId) => {
   try {
     const likesResponse = await fetch(
-      `http://localhost:3001/api/scenes/${sceneId}/likes?userId=${currentUser?.id || ""}`
+      `https://fanverse-backend-jqhf.onrender.com/api/scenes/${sceneId}/likes?userId=${currentUser?.id || ""}`
     );
 
     const likesData = await likesResponse.json();
@@ -588,7 +588,7 @@ const loadSceneEngagement = async (sceneId) => {
 }
 
     const commentsResponse = await fetch(
-      `http://localhost:3001/api/scenes/${sceneId}/comments`
+      `https://fanverse-backend-jqhf.onrender.com/api/scenes/${sceneId}/comments`
     );
 
     const commentsData = await commentsResponse.json();
@@ -626,7 +626,7 @@ const submitComment = async (sceneId) => {
 
   try {
     const response = await fetch(
-      `http://localhost:3001/api/scenes/${sceneId}/comments`,
+      `https://fanverse-backend-jqhf.onrender.com/api/scenes/${sceneId}/comments`,
       {
         method: "POST",
         headers: {
@@ -1122,7 +1122,7 @@ if (currentPage === "search") {
           onClick={async () => {
             try {
               const response = await fetch(
-                `http://localhost:3001/api/users/${encodeURIComponent(
+                `https://fanverse-backend-jqhf.onrender.com/api/users/${encodeURIComponent(
                   user.username
                 )}`
               );
@@ -1136,7 +1136,7 @@ if (currentPage === "search") {
 
               const posts = data.posts || [];
 
-setSearchedUser(data.user);
+setSearchedUser();
 setSearchedPosts(posts);
 
 for (const post of posts) {
@@ -1428,7 +1428,7 @@ if (currentPage === "profile") {
 
           try {
             const response = await fetch(
-              "http://localhost:3001/api/profile",
+              "https://fanverse-backend-jqhf.onrender.com/api/profile",
               {
                 method: "PUT",
                 headers: {
@@ -1690,7 +1690,7 @@ if (!isAuthenticated) {
 
               try {
                 const response = await fetch(
-                  `http://localhost:3001/api/scenes/${currentSceneId}/public`,
+                  `https://fanverse-backend-jqhf.onrender.com/api/scenes/${currentSceneId}/public`,
                   {
                     method: "PUT",
                     headers: {
