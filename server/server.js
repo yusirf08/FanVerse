@@ -31,7 +31,7 @@ const mcpClient = new Client({
 });
 
 const mcpTransport = new StdioClientTransport({
-  command: "/Users/yusrairfan/.local/bin/uvx",
+  command: "uvx",
   args: ["mcp-clickhouse"],
   env: {
     ...process.env,
