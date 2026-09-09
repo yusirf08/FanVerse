@@ -1841,3 +1841,56 @@ align-items: flex-start;
   color: white;
   border-color: rgba(255, 255, 255, 0.3);
 }
+
+/* =========================
+   MOBILE FEED FIX
+========================= */
+
+@media (max-width: 700px) {
+  .feed-page {
+    width: 100%;
+    max-width: 100%;
+    padding: 45px 18px 70px;
+  }
+
+  .feed-header {
+    display: block !important;
+    margin-bottom: 30px;
+  }
+
+  .feed-header > div:first-child {
+    margin-bottom: 22px;
+  }
+
+  .feed-header h1 {
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+  .feed-header .description {
+    font-size: 13px;
+  }
+
+  .feed-search {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+  }
+
+  .feed-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .feed-scene-card {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .feed-scene-card h2 {
+    font-size: 18px;
+  }
+}
