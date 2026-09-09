@@ -1192,9 +1192,6 @@ app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
 
-server.on("error", (error) => {
-  console.error("Server error:", error);
-});
 
 process.on("exit", (code) => {
   console.log("Process exiting with code:", code);

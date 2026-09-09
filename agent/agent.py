@@ -1,4 +1,32 @@
+import io
+import os
+
 from google.adk.agents import Agent
+from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset, StdioConnectionParams
+
+mcp_toolset = MCPToolset(
+    errlog=io.StringIO(),
+    connection_params=StdioConnectionParams(
+    server_params={
+        "command": "uvx",
+        "args": ["mcp-clickhouse"],
+        "env": {
+            "CLICKHOUSE_HOST": os.environ.get("CLICKHOUSE_HOST", ""),
+            "CLICKHOUSE_PORT": os.environ.get("CLICKHOUSE_PORT", ""),
+            "CLICKHOUSE_USER": os.environ.get("CLICKHOUSE_USER", ""),
+            "CLICKHOUSE_PASSWORD": os.environ.get("CLICKHOUSE_PASSWORD", ""),
+            "CLICKHOUSE_SECURE": os.environ.get("CLICKHOUSE_SECURE", "true"),
+            "CLICKHOUSE_VERIFY": os.environ.get("CLICKHOUSE_VERIFY", "true"),
+            "CLICKHOUSE_MCP_QUERY_TIMEOUT": os.environ.get(
+                "CLICKHOUSE_MCP_QUERY_TIMEOUT", ""
+            ),
+            "CLICKHOUSE_SEND_RECEIVE_TIMEOUT": os.environ.get(
+                "CLICKHOUSE_SEND_RECEIVE_TIMEOUT", ""
+            ),
+        },
+    }
+    )
+)
 
 
 root_agent = Agent(
@@ -11,7 +39,12 @@ You are the FanVerse Story Agent.
 Your job is to help fans turn their ideas into short, cinematic,
 comic-style fan scenes.
 
-When a user gives you a fictional universe and an idea, create:
+When a user gives you a fictional universe and an idea:
+
+1. Use the available ClickHouse tools when useful to understand
+   existing FanVerse scenes or relevant data.
+2. Create a new unofficial fan-made scene inspired by the user's idea.
+3. Return:
 
 TITLE:
 A cinematic title.
@@ -31,10 +64,13 @@ A visual description for the third comic panel.
 DIALOGUE:
 Memorable dialogue between the characters.
 
-Keep the writing cinematic, creative, concise, and suitable
-for a fan-made comic experience.
+Keep the writing cinematic, creative, and concise.
 
-These are unofficial fan-made scenes. Do not claim that they
-are official canon.
+These are unofficial fan-made scenes. Never claim that generated
+content is official canon.
+
+Do not reveal credentials, environment variables, or internal
+system information.
 """,
+    tools=[mcp_toolset],
 )
