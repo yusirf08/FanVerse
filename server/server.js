@@ -1186,8 +1186,10 @@ app.get("/api/trending", async (req, res) => {
     });
   }
 });
-const server = app.listen(PORT, () => {
-  console.log(`FanVerse server running at http://localhost:${PORT}`);
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
 });
 
 server.on("error", (error) => {
