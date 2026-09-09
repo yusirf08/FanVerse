@@ -219,6 +219,7 @@ FROM fanverse_scenes
 app.post("/api/signup", async (req, res) => {
   try {
     const { name, username, email, password } = req.body;
+    console.log("SIGNUP BODY:", req.body);
 
     if (
       !name?.trim() ||
