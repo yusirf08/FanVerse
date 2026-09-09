@@ -1824,7 +1824,7 @@ align-items: flex-start;
 .back-button:hover {
   color: white;
 }
-..search-results .back-button {
+.search-results .back-button {
   display: block;
   margin-top: 24px;
   margin-left: 0;
