@@ -4,6 +4,14 @@ FanVerse is an AI-powered cinematic fan-fiction platform that turns a fan's idea
 
 Instead of only generating text, FanVerse creates a structured cinematic scene with a title, story continuation, visual panel descriptions, and dialogue. Fans can then discover, like, comment on, and share scenes created by the community.
 
+## Demo
+
+[Watch the FanVerse Demo on YouTube](https://youtu.be/LHvJ74QC73Y)
+
+[Try FanVerse Live](https://fanverse-frontend.onrender.com)
+
+> Note: The hosted demo may have limited functionality after the hackathon due to the expiration of the external service subscription/credits used for the project. The demo video shows the complete application and its functionality as built during development.
+
 ## What makes FanVerse different?
 
 FanVerse combines AI-assisted creation with community discovery.
